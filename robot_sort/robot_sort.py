@@ -100,6 +100,7 @@ class SortingRobot:
         """
 
         # Fill this out
+        # Bubble sort method with light to indicate is a swap has been made this run
         self.set_light_on()
         while self.light_is_on() == True:
             self.set_light_off()
@@ -117,8 +118,9 @@ class SortingRobot:
                     self.swap_item()  # put item back
                     self.move_right()
                     # leave light off as no swap occured
-            while self.can_move_left() == True:
-                self.move_left()
+            if self.light_is_on:  # no need to move back left if sorted
+                while self.can_move_left() == True:
+                    self.move_left()
 
 
 if __name__ == "__main__":
